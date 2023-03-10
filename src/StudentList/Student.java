@@ -1,7 +1,8 @@
 package StudentList;
 
 public class Student {
-  String name;
+
+  private String name;
   String group;
   String eMail = null;
 
@@ -14,5 +15,29 @@ public class Student {
     this.name = name;
     this.group = group;
     this.eMail = eMail;
+  }
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
+  public void setGroup(String group) {
+    this.group = group;
+  }
+
+  public void seteMail(String eMail) {
+    this.eMail = eMail;
+  }
+
+  public String getName() {
+    return name;
+  }
+
+  public String getGroup() {
+    return group;
+  }
+
+  public String geteMail() {
+    return eMail;
   }
 }
