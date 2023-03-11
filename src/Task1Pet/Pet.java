@@ -46,4 +46,19 @@ public class Pet {
     this.name = name;
   }
 
+  public Kind getKind() {
+    return type;
+  }
+
+  public String getName() {
+    return name;
+  }
+
+  public String getBirthday() {
+    return birthday;
+  }
+
+  public double getWeight() {
+    return weight;
+  }
 }
