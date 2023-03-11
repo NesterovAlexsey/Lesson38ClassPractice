@@ -26,11 +26,24 @@ public class Pet {
     OTHER,
   }
 
-  Kind typeOfPet;
+  private Kind type;
 
-  String name;
+  private String name;
 
-  String birthday;
+  private String birthday;
 
   double weight;
+
+  public Pet(Kind type, String name, String birthday, double weight) {
+    this.type = type;
+    this.name = name;
+    this.birthday = birthday;
+    this.weight = weight;
+  }
+
+  public Pet(Kind type, String name) {
+    this.type = type;
+    this.name = name;
+  }
+
 }
