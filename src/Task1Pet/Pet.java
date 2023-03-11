@@ -7,6 +7,7 @@
 //"кличка" (тип String),
 //"дата рождения" (тип String),
 //вес (тип double);
+
 //конструктор, сеттеры, геттеры;
 //статический метод для создания животного при прочтении данных из строки "dog,кличка",
 // "cat,кличка,вес", "turtle,кличка,вес,дата рождения".
@@ -18,4 +19,18 @@
 package Task1Pet;
 
 public class Pet {
+
+  enum Kind {
+    DOG,
+    CAT,
+    OTHER,
+  }
+
+  Kind typeOfPet;
+
+  String name;
+
+  String birthday;
+
+  double weight;
 }
