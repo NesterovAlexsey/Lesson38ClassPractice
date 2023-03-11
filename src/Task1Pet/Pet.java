@@ -30,9 +30,9 @@ public class Pet {
 
   private String name;
 
-  private String birthday;
+  private String birthday = null;
 
-  double weight;
+  double weight = 0.0;
 
   public Pet(Kind type, String name, String birthday, double weight) {
     this.type = type;
@@ -60,5 +60,21 @@ public class Pet {
 
   public double getWeight() {
     return weight;
+  }
+
+  public void setKind(Kind type) {
+    this.type = type;
+  }
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
+  public void setBirthday(String birthday) {
+    this.birthday = birthday;
+  }
+
+  public void setWeight(double weight) {
+    this.weight = weight;
   }
 }
