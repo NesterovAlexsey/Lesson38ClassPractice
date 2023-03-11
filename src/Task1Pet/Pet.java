@@ -7,8 +7,8 @@
 //"кличка" (тип String),
 //"дата рождения" (тип String),
 //вес (тип double);
-
 //конструктор, сеттеры, геттеры;
+
 //статический метод для создания животного при прочтении данных из строки "dog,кличка",
 // "cat,кличка,вес", "turtle,кличка,вес,дата рождения".
 //Создать класс Main, в котором данные будут считываться с консоли и красиво выводиться на экран.
@@ -39,6 +39,12 @@ public class Pet {
     this.name = name;
     this.birthday = birthday;
     this.weight = weight;
+  }
+
+  public Pet(Kind type, String name, String birthday) {
+    this.type = type;
+    this.name = name;
+    this.birthday = birthday;
   }
 
   public Pet(Kind type, String name) {
@@ -77,4 +83,6 @@ public class Pet {
   public void setWeight(double weight) {
     this.weight = weight;
   }
+
+
 }
