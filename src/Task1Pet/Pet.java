@@ -11,6 +11,7 @@
 
 //статический метод для создания животного при прочтении данных из строки "dog,кличка",
 // "cat,кличка,вес", "turtle,кличка,вес,дата рождения".
+
 //Создать класс Main, в котором данные будут считываться с консоли и красиво выводиться на экран.
 //
 //Формат входных данных:
@@ -19,6 +20,8 @@
 package Task1Pet;
 
 public class Pet {
+
+  final private static char SEP = ',';
 
   enum Kind {
     DOG,
@@ -34,7 +37,7 @@ public class Pet {
 
   double weight = 0.0;
 
-  public Pet(Kind type, String name, String birthday, double weight) {
+  public Pet(Kind type, String name, double weight, String birthday) {
     this.type = type;
     this.name = name;
     this.birthday = birthday;
@@ -84,5 +87,27 @@ public class Pet {
     this.weight = weight;
   }
 
+  public static Pet parsePet(Kind type, String line) {
+    int sepPosition = line.indexOf(SEP);
+    String name = "";
+    double weight = 0.0;
+    String birthday = "";
 
+
+    if (sepPosition != -1) {
+      int sepPosition2 = line.substring(0, sepPosition + 1).indexOf(SEP);
+
+      if (sepPosition2 != -1) {
+        name = line.substring(sepPosition, sepPosition2);
+        int sepPosition3 = line.substring(sepPosition2 + 1).indexOf(SEP);
+
+        if (sepPosition3 != -1) {
+          weight = Double.parseDouble(line.substring(sepPosition2 + 1, sepPosition3));
+          birthday = line.substring(sepPosition3 + 1);
+
+        }
+      }
+    }
+    return new Pet(type, name, weight, birthday);
+  }
 }
