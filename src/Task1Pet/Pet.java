@@ -43,14 +43,14 @@ public class Pet {
   public Pet(Kind type, String name, double weight, String birthday) {
     this.type = type;
     this.name = name;
-    this.birthday = birthday;
     this.weight = weight;
+    this.birthday = birthday;
   }
 
-  public Pet(Kind type, String name, String birthday) {
+  public Pet(Kind type, String name, double weight) {
     this.type = type;
     this.name = name;
-    this.birthday = birthday;
+    this.weight = weight;
   }
 
   public Pet(Kind type, String name) {
@@ -90,10 +90,8 @@ public class Pet {
     this.weight = weight;
   }
 
-  public void /*static Pet*/ parsePet(String line) {
-//    String name = "";
-//    double weight = 0.0;
-//    String birthday = "";
+  public static Pet parsePet(String line) {
+
     int counter = 0;
     char[] lineSymbols = line.toCharArray();
     List<Integer> sepPosition = new ArrayList<>();
@@ -105,34 +103,35 @@ public class Pet {
       }
     }
 
+    Kind type = Kind.OTHER;
+    String name = "";
+    double weight = 0.0;
+    String birthday = "";
+
     switch (counter) {
       case (0):
         System.err.println("Incorrect line");
         break;
       case (1):
         //To Do сделать проверку на другие элементы.
-        Kind type = Kind.valueOf(line.substring(0, sepPosition.get(0)).toUpperCase());
-        String name = line.substring(sepPosition.get(0) + 1);
-        Pet result = new Pet(type, name);
-        System.out.println(result.getKind() + " " + result.getName());
+        type = Kind.valueOf(line.substring(0, sepPosition.get(0)).toUpperCase());
+        name = line.substring(sepPosition.get(0) + 1);
+        break;
+      case (2):
+        type = Kind.valueOf(line.substring(0, sepPosition.get(0)).toUpperCase());
+        name = line.substring(sepPosition.get(0) + 1, sepPosition.get(1));
+        weight = Double.parseDouble(line.substring(sepPosition.get(1) + 1));
+
+        break;
+      case (3):
+        type = Kind.valueOf(line.substring(0, sepPosition.get(0)).toUpperCase());
+        name = line.substring(sepPosition.get(0) + 1, sepPosition.get(1));
+        weight = Double.parseDouble(line.substring(sepPosition.get(1) + 1));
+        birthday = line.substring(sepPosition.get(2) + 1);
+        break;
     }
 
-    System.out.println(sepPosition);
-
-//    if (sepPosition != -1) {
-//      int sepPosition2 = line.substring(0, sepPosition + 1).indexOf(SEP);
-//
-//      if (sepPosition2 != -1) {
-//        name = line.substring(sepPosition, sepPosition2);
-//        int sepPosition3 = line.substring(sepPosition2 + 1).indexOf(SEP);
-//
-//        if (sepPosition3 != -1) {
-//          weight = Double.parseDouble(line.substring(sepPosition2 + 1, sepPosition3));
-//          birthday = line.substring(sepPosition3 + 1);
-//
-//        }
-//      }
-//    }
-    //return new Pet(type, name, weight, birthday);
+    Pet result = new Pet(type, name, weight, birthday);
+    return result;
   }
 }
