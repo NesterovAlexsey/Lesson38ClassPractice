@@ -105,15 +105,19 @@ public class Pet {
       }
     }
 
+    switch (counter) {
+      case (0):
+        System.err.println("Incorrect line");
+        break;
+      case (1):
+        //To Do сделать проверку на другие элементы.
+        Kind type = Kind.valueOf(line.substring(0, sepPosition.get(0)).toUpperCase());
+        String name = line.substring(sepPosition.get(0) + 1);
+        Pet result = new Pet(type, name);
+        System.out.println(result.getKind() + " " + result.getName());
+    }
+
     System.out.println(sepPosition);
-
-
-//    switch (counter) {
-//      case (1):
-//
-//    }
-
-
 
 //    if (sepPosition != -1) {
 //      int sepPosition2 = line.substring(0, sepPosition + 1).indexOf(SEP);
