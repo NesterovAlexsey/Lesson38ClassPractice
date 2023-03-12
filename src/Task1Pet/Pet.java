@@ -19,6 +19,9 @@
 
 package Task1Pet;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Pet {
 
   final private static char SEP = ',';
@@ -87,27 +90,45 @@ public class Pet {
     this.weight = weight;
   }
 
-  public static Pet parsePet(Kind type, String line) {
-    int sepPosition = line.indexOf(SEP);
-    String name = "";
-    double weight = 0.0;
-    String birthday = "";
+  public void /*static Pet*/ parsePet(String line) {
+//    String name = "";
+//    double weight = 0.0;
+//    String birthday = "";
+    int counter = 0;
+    char[] lineSymbols = line.toCharArray();
+    List<Integer> sepPosition = new ArrayList<>();
 
-
-    if (sepPosition != -1) {
-      int sepPosition2 = line.substring(0, sepPosition + 1).indexOf(SEP);
-
-      if (sepPosition2 != -1) {
-        name = line.substring(sepPosition, sepPosition2);
-        int sepPosition3 = line.substring(sepPosition2 + 1).indexOf(SEP);
-
-        if (sepPosition3 != -1) {
-          weight = Double.parseDouble(line.substring(sepPosition2 + 1, sepPosition3));
-          birthday = line.substring(sepPosition3 + 1);
-
-        }
+    for (int sym = 0; sym < line.length(); ++sym) {
+      if (lineSymbols[sym] == SEP) {
+        counter++;
+        sepPosition.add(sym);
       }
     }
-    return new Pet(type, name, weight, birthday);
+
+    System.out.println(sepPosition);
+
+
+//    switch (counter) {
+//      case (1):
+//
+//    }
+
+
+
+//    if (sepPosition != -1) {
+//      int sepPosition2 = line.substring(0, sepPosition + 1).indexOf(SEP);
+//
+//      if (sepPosition2 != -1) {
+//        name = line.substring(sepPosition, sepPosition2);
+//        int sepPosition3 = line.substring(sepPosition2 + 1).indexOf(SEP);
+//
+//        if (sepPosition3 != -1) {
+//          weight = Double.parseDouble(line.substring(sepPosition2 + 1, sepPosition3));
+//          birthday = line.substring(sepPosition3 + 1);
+//
+//        }
+//      }
+//    }
+    //return new Pet(type, name, weight, birthday);
   }
 }
