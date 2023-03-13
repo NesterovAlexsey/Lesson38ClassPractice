@@ -35,9 +35,9 @@ public class Pet {
 
   private String name;
 
-  private String birthday = null;
+  private String birthday;
 
-  double weight = 0.0;
+  double weight;
 
   public Pet(Kind type, String name, double weight, String birthday) {
     this.type = type;
@@ -114,9 +114,7 @@ public class Pet {
     return counter;
   }
 
-  public static Pet parsePet(String line) {
-
-    int counter = counter(line);
+  private static List<Integer> findSepIndex(String line) {
     char[] lineSymbols = line.toCharArray();
     List<Integer> sepPosition = new ArrayList<>();
 
@@ -125,6 +123,13 @@ public class Pet {
         sepPosition.add(sym);
       }
     }
+    return sepPosition;
+  }
+
+  public static Pet parsePet(String line) {
+
+    int counter = counter(line);
+    List<Integer> sepPosition = findSepIndex(line);
 
     Kind type = Kind.OTHER;
     String name = null;
