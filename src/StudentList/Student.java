@@ -52,7 +52,7 @@ public class Student {
     return group;
   }
 
-  public String geteMail() {
+  public String getEMail() {
     return eMail;
   }
 
