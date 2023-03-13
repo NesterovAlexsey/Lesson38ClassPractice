@@ -1,0 +1,10 @@
+2
+group1
+3
+Student1
+Student2,hisemail@net.com
+Student3
+group2
+1
+Individual,zaniatija@dlia.odnogo
+
