@@ -8,6 +8,20 @@ import java.util.List;
 
 public class Main {
   public static void main(String[] args) throws IOException {
+
+    List<String> dataAboutPet = getDataFromConsol();
+
+    for (String pet : dataAboutPet) {
+      Pet onePet = Pet.parsePet(pet);
+      System.out.printf("%s, %s, %s, %s%n",
+          onePet.getKind(), onePet.getName(), onePet.getWeight(), onePet.getBirthday());
+    }
+
+    //to do - catch NumberFormatException;
+
+  }
+
+  private static List<String> getDataFromConsol() throws IOException {
     BufferedReader read = new BufferedReader(new InputStreamReader(System.in));
 
     int number = Integer.parseInt(read.readLine());
@@ -17,18 +31,6 @@ public class Main {
       dataAboutPet.add(read.readLine());
     }
 
-    for (String pet : dataAboutPet) {
-      Pet onePet = Pet.parsePet(pet);
-      System.out.printf("%s, %s, %s, %s%n",
-          onePet.getKind(), onePet.getName(), onePet.getWeight(), onePet.getBirthday());
-    }
-
-
-    //to do - catch NumberFormatException;
-
-
-    // System.out.println(myPet.getKind() + myPet.getName() + myPet.getWeight() + myPet
-    // .getBirthday());
-    //,1.0,дата рождения
+    return dataAboutPet;
   }
 }
