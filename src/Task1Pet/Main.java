@@ -10,14 +10,7 @@ public class Main {
   public static void main(String[] args) throws IOException {
 
     List<String> dataAboutPet = getDataFromConsol();
-
-    for (String pet : dataAboutPet) {
-      Pet onePet = Pet.parsePet(pet);
-      System.out.printf("%s, %s, %s, %s%n",
-          onePet.getKind(), onePet.getName(), onePet.getWeight(), onePet.getBirthday());
-    }
-
-    //to do - catch NumberFormatException;
+    printResult(dataAboutPet);
 
   }
 
@@ -32,5 +25,13 @@ public class Main {
     }
 
     return dataAboutPet;
+  }
+
+  private static void printResult(List<String> dataAboutPet) {
+    for (String pet : dataAboutPet) {
+      Pet onePet = Pet.parsePet(pet);
+      System.out.printf("%s, %s, %s, %s%n",
+          onePet.getKind(), onePet.getName(), onePet.getWeight(), onePet.getBirthday());
+    }
   }
 }
