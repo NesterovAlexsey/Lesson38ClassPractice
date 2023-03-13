@@ -8,10 +8,8 @@ import java.util.List;
 
 public class Main {
   public static void main(String[] args) throws IOException {
-
     List<String> dataAboutPet = getDataFromConsol();
     printResult(dataAboutPet);
-
   }
 
   private static List<String> getDataFromConsol() throws IOException {
@@ -28,10 +26,17 @@ public class Main {
   }
 
   private static void printResult(List<String> dataAboutPet) {
+
     for (String pet : dataAboutPet) {
-      Pet onePet = Pet.parsePet(pet);
-      System.out.printf("%s, %s, %s, %s%n",
-          onePet.getKind(), onePet.getName(), onePet.getWeight(), onePet.getBirthday());
+      try {
+        Pet onePet = Pet.parsePet(pet);
+        System.out.printf("%s, %s, %s, %s%n",
+            onePet.getKind(), onePet.getName(), onePet.getWeight(), onePet.getBirthday());
+      } catch (NumberFormatException e) { //it is part of next Exception, but text is other
+        System.out.println("Needs Double format of data =" + e.getMessage());
+      } catch (IllegalArgumentException e) {
+        System.out.println("Incorrect input data =" + e.getMessage());
+      }
     }
   }
 }

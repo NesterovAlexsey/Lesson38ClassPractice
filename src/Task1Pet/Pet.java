@@ -137,7 +137,7 @@ public class Pet {
     String birthday = null;
 
     switch (counter) {
-      case (0) -> System.err.println("Incorrect input data");
+      case (0) -> throw new IllegalArgumentException("It is no '" + SEP + "' parameter in line");
       case (1) -> {
         if (checkKindParameter(line)) {
           type = Kind.valueOf(line.substring(0, sepPosition.get(0)).toUpperCase());
