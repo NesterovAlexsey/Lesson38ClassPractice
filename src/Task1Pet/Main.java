@@ -17,25 +17,15 @@ public class Main {
       dataAboutPet.add(read.readLine());
     }
 
-    System.out.println(dataAboutPet);
+    for (String pet : dataAboutPet) {
+      Pet onePet = Pet.parsePet(pet);
+      System.out.printf("%s, %s, %s, %s%n",
+          onePet.getKind(), onePet.getName(), onePet.getWeight(), onePet.getBirthday());
+    }
+
 
     //to do - catch NumberFormatException;
 
-    String line = "dog,Чарли";
-    Pet test = Pet.parsePet(line);
-
-    String line2 = "cat,Веня,2.4";
-    Pet test2 = Pet.parsePet(line2);
-
-    String line3 = "turtle,Flash,3.0,2010";
-    Pet test3 = Pet.parsePet(line3);
-
-    System.out.printf("%s, %s, %s, %s%n",
-        test.getKind(), test.getName(), test.getWeight(), test.getBirthday());
-    System.out.printf("%s, %s, %s, %s%n",
-        test2.getKind(), test2.getName(), test2.getWeight(), test2.getBirthday());
-    System.out.printf("%s, %s, %s, %s%n",
-        test3.getKind(), test3.getName(), test3.getWeight(), test3.getBirthday());
 
     // System.out.println(myPet.getKind() + myPet.getName() + myPet.getWeight() + myPet
     // .getBirthday());

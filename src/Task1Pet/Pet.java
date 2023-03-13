@@ -137,7 +137,6 @@ public class Pet {
     String birthday = null;
 
     switch (counter) {
-      //To do - add Exception in 0
       case (0) -> System.err.println("Incorrect input data");
       case (1) -> {
         if (checkKindParameter(line)) {
