@@ -24,10 +24,9 @@ public class Main {
     for (int groupId = 0; groupId < groups; ++groupId) {
       readGroup(br, students);
     }
-    for (Student student : students) {
-      System.out.printf("%s (%s) в группе %s%n", student.getName(), student.getEMail(),
-          student.getGroup());
-    }
+
+    br.close();
+    printResult(students);
   }
 
   private static void readGroup(BufferedReader br, List<Student> students) throws IOException {
@@ -37,6 +36,12 @@ public class Main {
       String line = br.readLine();
       Student student = Student.parseStudent(groupName, line);
       students.add(student);
+    }
+  }
+  private static void printResult(List<Student> students) {
+    for (Student student : students) {
+      System.out.printf("%s (%s) в группе %s%n", student.getName(), student.getEMail(),
+          student.getGroup());
     }
   }
 }
