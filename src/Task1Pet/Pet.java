@@ -90,6 +90,19 @@ public class Pet {
     this.weight = weight;
   }
 
+  private static boolean checkKindParameter(String line) {
+
+    boolean flagForKind = false;
+    String typeString = line.substring(0, line.indexOf(SEP)).toUpperCase();
+
+    if (typeString.equals("CAT")) {
+      flagForKind = true;
+    } else if (typeString.equals("DOG")) {
+      flagForKind = true;
+    }
+    return flagForKind;
+  }
+
   public static Pet parsePet(String line) {
 
     int counter = 0;
@@ -104,31 +117,33 @@ public class Pet {
     }
 
     Kind type = Kind.OTHER;
-    String name = "";
+    String name = null;
     double weight = 0.0;
-    String birthday = "";
+    String birthday = null;
 
     switch (counter) {
-      case (0):
-        System.err.println("Incorrect line");
-        break;
-      case (1):
-        //To Do сделать проверку на другие элементы.
-        type = Kind.valueOf(line.substring(0, sepPosition.get(0)).toUpperCase());
+      case (0) -> System.err.println("Incorrect input data");
+      case (1) -> {
+        if (checkKindParameter(line)) {
+          type = Kind.valueOf(line.substring(0, sepPosition.get(0)).toUpperCase());
+        }
         name = line.substring(sepPosition.get(0) + 1);
-        break;
-      case (2):
-        type = Kind.valueOf(line.substring(0, sepPosition.get(0)).toUpperCase());
+      }
+      case (2) -> {
+        if (checkKindParameter(line)) {
+          type = Kind.valueOf(line.substring(0, sepPosition.get(0)).toUpperCase());
+        }
         name = line.substring(sepPosition.get(0) + 1, sepPosition.get(1));
         weight = Double.parseDouble(line.substring(sepPosition.get(1) + 1));
-
-        break;
-      case (3):
-        type = Kind.valueOf(line.substring(0, sepPosition.get(0)).toUpperCase());
+      }
+      case (3) -> {
+        if (checkKindParameter(line)) {
+          type = Kind.valueOf(line.substring(0, sepPosition.get(0)).toUpperCase());
+        }
         name = line.substring(sepPosition.get(0) + 1, sepPosition.get(1));
-        weight = Double.parseDouble(line.substring(sepPosition.get(1) + 1));
+        weight = Double.parseDouble(line.substring((sepPosition.get(1) + 1), sepPosition.get(2)));
         birthday = line.substring(sepPosition.get(2) + 1);
-        break;
+      }
     }
 
     Pet result = new Pet(type, name, weight, birthday);
