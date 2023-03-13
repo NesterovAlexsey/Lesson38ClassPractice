@@ -159,6 +159,8 @@ public class Pet {
         weight = Double.parseDouble(line.substring((sepPosition.get(1) + 1), sepPosition.get(2)));
         birthday = line.substring(sepPosition.get(2) + 1);
       }
+      default -> throw new IllegalArgumentException(
+          "Unexpected numbers of characters '" + SEP + "' = " + counter);
     }
 
     Pet result = new Pet(type, name, weight, birthday);
