@@ -8,7 +8,6 @@
 //"дата рождения" (тип String),
 //вес (тип double);
 //конструктор, сеттеры, геттеры;
-
 //статический метод для создания животного при прочтении данных из строки "dog,кличка",
 // "cat,кличка,вес", "turtle,кличка,вес,дата рождения".
 
@@ -103,15 +102,26 @@ public class Pet {
     return flagForKind;
   }
 
+  private static int counter(String line) {
+    int counter = 0;
+    char[] lineSymbols = line.toCharArray();
+
+    for (int sym = 0; sym < line.length(); ++sym) {
+      if (lineSymbols[sym] == SEP) {
+        counter++;
+      }
+    }
+    return counter;
+  }
+
   public static Pet parsePet(String line) {
 
-    int counter = 0;
+    int counter = counter(line);
     char[] lineSymbols = line.toCharArray();
     List<Integer> sepPosition = new ArrayList<>();
 
     for (int sym = 0; sym < line.length(); ++sym) {
       if (lineSymbols[sym] == SEP) {
-        counter++;
         sepPosition.add(sym);
       }
     }
